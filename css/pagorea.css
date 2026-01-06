@@ -3,10 +3,30 @@
 .pagorea-body {
     background: linear-gradient(135deg, #1a2a3a 0%, #0f1820 50%, #1a2a3a 100%);
     background-attachment: fixed;
+    min-height: 100vh;
 }
 
 .pagorea-body::before {
     animation: breathing 6s ease-in-out infinite;
+}
+
+/* Pagorea Theme Colors */
+.pagorea-body .navbar {
+    background: rgba(15, 22, 25, 0.95);
+    border-bottom-color: #d4af37;
+}
+
+.pagorea-body footer {
+    background: rgba(15, 22, 25, 0.98);
+    border-top-color: #d4af37;
+}
+
+.pagorea-body footer a {
+    color: #d4af37;
+}
+
+.pagorea-body footer a:hover {
+    color: #f5c547;
 }
 
 @keyframes snowfall {
@@ -19,21 +39,25 @@
         transform: translateX(var(--drift)) rotateZ(180deg);
     }
     100% {
-        top: 100vh;
+        top: 280vh;
         opacity: 0.8;
         transform: translateX(0) rotateZ(360deg);
     }
 }
 
 #snowflake-container {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     pointer-events: none;
     z-index: 0;
-    overflow: hidden;
+    overflow: visible;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    display: contents !important;
 }
 
 .snowflake {
@@ -57,9 +81,15 @@
     overflow: hidden;
 }
 
+.pagorea-header .container {
+    max-width: 55%;
+    margin-left: 0;
+    text-align: left;
+}
+
 .pagorea-header h1 {
     color: #7fb8d4;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 10px rgba(127, 184, 212, 0.6), 0 0 20px rgba(127, 184, 212, 0.4), 0 0 30px rgba(127, 184, 212, 0.2);
 }
 
 .pagorea-header p {
@@ -68,8 +98,14 @@
 
 /* Intro Section */
 .pagorea-intro {
-    background: #1a1a1a;
-    border-bottom: 2px solid rgba(74, 144, 164, 0.3);
+    background: #0f1619;
+    border-bottom: 2px solid rgba(127, 184, 212, 0.3);
+}
+
+.pagorea-intro .container {
+    max-width: 55%;
+    margin-left: 0;
+    text-align: left;
 }
 
 .pagorea-intro h2 {
@@ -82,9 +118,73 @@
 
 /* Features Section */
 .pagorea-features {
-    background: #1a1a1a;
+    background: #0f1619;
     border-top: 2px solid rgba(74, 144, 164, 0.3);
     border-bottom: 2px solid rgba(74, 144, 164, 0.3);
+}
+
+/* Staggered Image Layout */
+.staggered-image-left,
+.staggered-image-right {
+    width: 100%;
+    padding: 3rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: transparent;
+}
+
+.staggered-image-left {
+    justify-content: flex-start;
+}
+
+.staggered-image-left img {
+    width: 45%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.staggered-image-left img:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+.staggered-image-right {
+    justify-content: flex-end;
+}
+
+.staggered-image-right img {
+    width: 45%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.staggered-image-right img:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+.image-text {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+}
+
+.image-text h3 {
+    color: #7fb8d4;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(127, 184, 212, 0.5), 0 0 20px rgba(127, 184, 212, 0.3);
+}
+
+.image-text p {
+    color: #d0d0d0;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 .pagorea-features h2 {
@@ -121,7 +221,7 @@
 
 /* Magic Section */
 .pagorea-magic {
-    background: #1a1a1a;
+    background: #0f1619;
     padding: 4rem 2rem;
     position: relative;
     z-index: 1;
@@ -173,7 +273,7 @@
 
 /* Territory Section */
 .pagorea-territory {
-    background: #1a1a1a;
+    background: #0f1619;
     border-top: 2px solid rgba(74, 144, 164, 0.3);
     border-bottom: 2px solid rgba(74, 144, 164, 0.3);
     padding: 4rem 2rem;
@@ -235,6 +335,7 @@
     color: #7fb8d4;
     text-align: center;
     margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(127, 184, 212, 0.5), 0 0 20px rgba(127, 184, 212, 0.3);
 }
 
 .pagorea-roles > .container > p {

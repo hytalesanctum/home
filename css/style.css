@@ -101,7 +101,7 @@ body.pagorea-body::before {
 }
 
 body.ashkara-body::before {
-    background: linear-gradient(135deg, #4a1a1a 0%, #8b2e2e 50%, #4a1a1a 100%);
+    background: linear-gradient(135deg, #502020 0%, #2a1010 50%, #502020 100%);
     background-attachment: scroll;
     animation: breathing 6s ease-in-out infinite;
 }

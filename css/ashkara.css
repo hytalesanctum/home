@@ -1,12 +1,31 @@
 /* Ashkara Civilization Styling */
 
 .ashkara-body {
-    background: linear-gradient(135deg, #3a1818 0%, #1a0f0f 50%, #3a1818 100%);
+    background: linear-gradient(135deg, #1f0f0f 0%, #0a0505 50%, #1f0f0f 100%);
     background-attachment: fixed;
 }
 
 .ashkara-body::before {
     animation: breathing 6s ease-in-out infinite;
+}
+
+/* Ashkara Theme Colors */
+.ashkara-body .navbar {
+    background: rgba(25, 10, 10, 0.95);
+    border-bottom-color: #d4af37;
+}
+
+.ashkara-body footer {
+    background: rgba(25, 10, 10, 0.98);
+    border-top-color: #d4af37;
+}
+
+.ashkara-body footer a {
+    color: #d4af37;
+}
+
+.ashkara-body footer a:hover {
+    color: #f5c547;
 }
 
 /* Ember Particle System */
@@ -106,9 +125,15 @@
     overflow: hidden;
 }
 
+.ashkara-header .container {
+    max-width: 55%;
+    margin-left: 0;
+    text-align: left;
+}
+
 .ashkara-header h1 {
     color: #d84a4a;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 10px rgba(216, 74, 74, 0.6), 0 0 20px rgba(216, 74, 74, 0.4), 0 0 30px rgba(216, 74, 74, 0.2);
 }
 
 .ashkara-header p {
@@ -117,8 +142,14 @@
 
 /* Intro Section */
 .ashkara-intro {
-    background: #1a1a1a;
+    background: #190a0a;
     border-bottom: 2px solid rgba(139, 46, 46, 0.3);
+}
+
+.ashkara-intro .container {
+    max-width: 55%;
+    margin-left: 0;
+    text-align: left;
 }
 
 .ashkara-intro h2 {
@@ -129,9 +160,73 @@
     color: #f5d0d0;
 }
 
+/* Staggered Image Layout */
+.staggered-image-left,
+.staggered-image-right {
+    width: 100%;
+    padding: 3rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: transparent;
+}
+
+.staggered-image-left {
+    justify-content: flex-start;
+}
+
+.staggered-image-left img {
+    width: 45%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.staggered-image-left img:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+.staggered-image-right {
+    justify-content: flex-end;
+}
+
+.staggered-image-right img {
+    width: 45%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.staggered-image-right img:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+.image-text {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+}
+
+.image-text h3 {
+    color: #d84a4a;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(216, 74, 74, 0.5), 0 0 20px rgba(216, 74, 74, 0.3);
+}
+
+.image-text p {
+    color: #d0d0d0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
 /* Features Section */
 .ashkara-features {
-    background: #1a1a1a;
+    background: #190a0a;
     border-top: 2px solid rgba(139, 46, 46, 0.3);
     border-bottom: 2px solid rgba(139, 46, 46, 0.3);
 }
@@ -170,7 +265,7 @@
 
 /* Magic Section */
 .ashkara-magic {
-    background: #1a1a1a;
+    background: #190a0a;
     padding: 4rem 2rem;
     position: relative;
     z-index: 1;
@@ -222,7 +317,7 @@
 
 /* Territory Section */
 .ashkara-territory {
-    background: #1a1a1a;
+    background: #190a0a;
     border-top: 2px solid rgba(139, 46, 46, 0.3);
     border-bottom: 2px solid rgba(139, 46, 46, 0.3);
     padding: 4rem 2rem;
@@ -284,6 +379,7 @@
     color: #d84a4a;
     text-align: center;
     margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(216, 74, 74, 0.5), 0 0 20px rgba(216, 74, 74, 0.3);
 }
 
 .ashkara-roles > .container > p {
@@ -318,6 +414,8 @@
 .role h3 {
     color: #ff6b6b;
     margin-bottom: 0.5rem;
+    white-space: nowrap;
+    display: inline;
 }
 
 .role p {
