@@ -1,0 +1,317 @@
+/* Pagorea Civilization Styling */
+
+.pagorea-body {
+    background: linear-gradient(135deg, #1a2a3a 0%, #0f1820 50%, #1a2a3a 100%);
+    background-attachment: fixed;
+}
+
+.pagorea-body::before {
+    animation: breathing 6s ease-in-out infinite;
+}
+
+@keyframes snowfall {
+    0% {
+        top: 0;
+        opacity: 1;
+        transform: translateX(0) rotateZ(0deg);
+    }
+    50% {
+        transform: translateX(var(--drift)) rotateZ(180deg);
+    }
+    100% {
+        top: 100vh;
+        opacity: 0.8;
+        transform: translateX(0) rotateZ(360deg);
+    }
+}
+
+#snowflake-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    will-change: transform;
+    animation: snowfall 12s linear forwards;
+}
+
+/* Pagorea Header */
+.pagorea-header {
+    position: relative;
+    overflow: hidden;
+}
+
+.pagorea-header h1 {
+    color: #7fb8d4;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.pagorea-header p {
+    color: #9fdbf5;
+}
+
+/* Intro Section */
+.pagorea-intro {
+    background: #1a1a1a;
+    border-bottom: 2px solid rgba(74, 144, 164, 0.3);
+}
+
+.pagorea-intro h2 {
+    color: #7fb8d4;
+}
+
+.pagorea-intro p {
+    color: #d4e8f5;
+}
+
+/* Features Section */
+.pagorea-features {
+    background: #1a1a1a;
+    border-top: 2px solid rgba(74, 144, 164, 0.3);
+    border-bottom: 2px solid rgba(74, 144, 164, 0.3);
+}
+
+.pagorea-features h2 {
+    color: #7fb8d4;
+}
+
+.pagorea-features .feature-box {
+    background: linear-gradient(135deg, rgba(74, 144, 164, 0.15) 0%, rgba(26, 42, 58, 0.8) 100%);
+    border-left: 4px solid #7fb8d4;
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.pagorea-features .feature-box:hover {
+    background: linear-gradient(135deg, rgba(74, 144, 164, 0.25) 0%, rgba(26, 42, 58, 0.9) 100%);
+    box-shadow: 0 8px 20px rgba(74, 144, 164, 0.2);
+    transform: translateY(-3px);
+}
+
+.pagorea-features .feature-box h3 {
+    color: #9fdbf5;
+}
+
+.pagorea-features .feature-box p {
+    color: #d4e8f5;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Magic Section */
+.pagorea-magic {
+    background: #1a1a1a;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.pagorea-magic h2 {
+    color: #7fb8d4;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.pagorea-magic > .container > p {
+    text-align: center;
+    color: #d4e8f5;
+    margin-bottom: 2rem;
+}
+
+.magic-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.magic-spell {
+    background: rgba(74, 144, 164, 0.1);
+    border: 2px solid rgba(74, 144, 164, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.magic-spell:hover {
+    background: rgba(74, 144, 164, 0.2);
+    border-color: #7fb8d4;
+    box-shadow: 0 4px 15px rgba(74, 144, 164, 0.2);
+}
+
+.magic-spell h3 {
+    color: #9fdbf5;
+    margin-bottom: 0.5rem;
+}
+
+.magic-spell p {
+    color: #d4e8f5;
+    font-size: 0.95rem;
+}
+
+/* Territory Section */
+.pagorea-territory {
+    background: #1a1a1a;
+    border-top: 2px solid rgba(74, 144, 164, 0.3);
+    border-bottom: 2px solid rgba(74, 144, 164, 0.3);
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.pagorea-territory h2 {
+    color: #7fb8d4;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.pagorea-territory > .container > p {
+    text-align: center;
+    color: #d4e8f5;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.territory-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.territory-item {
+    background: rgba(74, 144, 164, 0.08);
+    border: 1px solid rgba(74, 144, 164, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.territory-item:hover {
+    background: rgba(74, 144, 164, 0.15);
+    border-color: #7fb8d4;
+}
+
+.territory-item h3 {
+    color: #9fdbf5;
+    margin-bottom: 0.5rem;
+}
+
+.territory-item p {
+    color: #d4e8f5;
+    font-size: 0.95rem;
+}
+
+/* Roles Section */
+.pagorea-roles {
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.pagorea-roles h2 {
+    color: #7fb8d4;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.pagorea-roles > .container > p {
+    text-align: center;
+    color: #d4e8f5;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.role {
+    background: rgba(74, 144, 164, 0.1);
+    border: 2px solid rgba(74, 144, 164, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.role:hover {
+    background: rgba(74, 144, 164, 0.2);
+    border-color: #7fb8d4;
+    box-shadow: 0 6px 20px rgba(74, 144, 164, 0.2);
+}
+
+.role h3 {
+    color: #9fdbf5;
+    margin-bottom: 0.5rem;
+}
+
+.role p {
+    color: #d4e8f5;
+    font-size: 0.95rem;
+}
+
+.cta-section {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(74, 144, 164, 0.3);
+}
+
+.cta-section .cta-button {
+    background: linear-gradient(135deg, #7fb8d4 0%, #4a90a4 100%);
+    border-color: #7fb8d4;
+    color: #fff;
+}
+
+.cta-section .cta-button:hover {
+    background: linear-gradient(135deg, #9fdbf5 0%, #7fb8d4 100%);
+    box-shadow: 0 6px 20px rgba(74, 144, 164, 0.4);
+}
+
+@media (max-width: 768px) {
+    .pagorea-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .magic-types {
+        grid-template-columns: 1fr;
+    }
+
+    .territory-list {
+        grid-template-columns: 1fr;
+    }
+
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,406 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'DalekPinpoint';
+    src: url('../fonts/DalekPinpointBold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+:root {
+    --primary-gold: #d4af37;
+    --primary-black: #1a1a1a;
+    --accent-white: #f5f5f5;
+    --marble-light: #2a2a2a;
+    --marble-dark: #0f0f0f;
+    --empyrea-green: #2d5a3d;
+    --zephyria-sand: #c9a961;
+    --pagorea-blue: #4a90a4;
+    --ashkara-red: #8b2e2e;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+@keyframes breathing {
+    0%, 100% {
+        filter: brightness(0.7);
+    }
+    50% {
+        filter: brightness(1.1);
+    }
+}
+
+body {
+    font-family: 'Georgia', serif;
+    color: #f5f5f5;
+    line-height: 1.6;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    perspective: 1000px;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('../images/big background.png') center/250% no-repeat;
+    background-attachment: scroll;
+    background-position: center calc(0px + var(--scroll-offset, 0px));
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    image-rendering: -webkit-optimize-contrast;
+    will-change: filter;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background-image: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><defs><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="5" result="noise" seed="2" /></filter></defs><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.08"/></svg>');
+    background-size: 150px 150px;
+    mix-blend-mode: overlay;
+}
+
+/* Civilization-specific gradient backgrounds */
+body.empyrea-body::before {
+    background: linear-gradient(135deg, #1a3d2a 0%, #2d5a3d 50%, #1a3d2a 100%);
+    background-attachment: scroll;
+    animation: breathing 6s ease-in-out infinite;
+}
+
+body.zephyria-body::before {
+    background: linear-gradient(135deg, #5a4a2a 0%, #c9a961 50%, #5a4a2a 100%);
+    background-attachment: scroll;
+    animation: breathing 6s ease-in-out infinite;
+}
+
+body.pagorea-body::before {
+    background: linear-gradient(135deg, #2a4a5a 0%, #4a90a4 50%, #2a4a5a 100%);
+    background-attachment: scroll;
+    animation: breathing 6s ease-in-out infinite;
+}
+
+body.ashkara-body::before {
+    background: linear-gradient(135deg, #4a1a1a 0%, #8b2e2e 50%, #4a1a1a 100%);
+    background-attachment: scroll;
+    animation: breathing 6s ease-in-out infinite;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(15, 15, 15, 0.95);
+    border-bottom: 3px solid #d4af37;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #d4af37;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DalekPinpoint', serif;
+}
+
+.logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #f5f5f5;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+    font-family: 'DalekPinpoint', serif;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d4af37;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #d4af37;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dropdown-toggle::after {
+    content: '▼';
+    font-size: 0.6rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle::after,
+.dropdown.active .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+@keyframes rollDown {
+    from {
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top center;
+    }
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: top center;
+    }
+}
+
+@keyframes rollUp {
+    from {
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: top center;
+    }
+    to {
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top center;
+    }
+}
+
+.dropdown-menu {
+    position: fixed;
+    background: rgba(15, 15, 15, 0.98);
+    list-style: none;
+    width: 130px;
+    min-width: 130px;
+    border: 2px solid #d4af37;
+    border-radius: 0 0 8px 8px;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 200;
+    backdrop-filter: blur(10px);
+    animation: rollUp 0.4s ease forwards;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    animation: rollDown 0.4s ease forwards;
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #f5f5f5;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Civilization-specific hover colors */
+.dropdown-menu a[href="empyrea.html"]:hover,
+.dropdown-menu a[href="empyrea.html"].active {
+    color: #5faa6f;
+}
+
+.dropdown-menu a[href="zephyria.html"]:hover,
+.dropdown-menu a[href="zephyria.html"].active {
+    color: #d4a961;
+}
+
+.dropdown-menu a[href="pagorea.html"]:hover,
+.dropdown-menu a[href="pagorea.html"].active {
+    color: #7fb8d4;
+}
+
+.dropdown-menu a[href="ashkara.html"]:hover,
+.dropdown-menu a[href="ashkara.html"].active {
+    color: #d84a4a;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'DalekPinpoint', serif;
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    color: #f5f5f5;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #d4af37;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #f5c547;
+}
+
+/* Buttons */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #d4af37 0%, #a8860f 100%);
+    color: #000;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    border: 2px solid #d4af37;
+}
+
+.cta-button:hover {
+    background: linear-gradient(135deg, #f5c547 0%, #d4af37 100%);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+    background: rgba(15, 15, 15, 0.98);
+    border-top: 3px solid #d4af37;
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 0;
+    z-index: 1;
+    position: relative;
+}
+
+footer a {
+    color: #d4af37;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #f5c547;
+}
+
+footer p {
+    color: #999;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

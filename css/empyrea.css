@@ -1,0 +1,349 @@
+/* Empyrea Civilization Styling */
+
+@keyframes fall {
+    0% {
+        top: 0;
+        opacity: 1;
+        transform: translateX(0) rotateZ(0deg);
+    }
+    50% {
+        transform: translateX(var(--drift)) rotateZ(180deg);
+    }
+    100% {
+        top: 100vh;
+        opacity: 0.8;
+        transform: translateX(0) rotateZ(360deg);
+    }
+}
+
+#leaf-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.falling-leaf {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: url('../images/leaf.png') center/contain no-repeat;
+    pointer-events: none;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    margin-left: -25px;
+}
+
+.empyrea-body {
+    background: linear-gradient(135deg, #1a2620 0%, #0f1815 50%, #1a2620 100%);
+    background-attachment: fixed;
+}
+
+.empyrea-body::before {
+    animation: breathing 6s ease-in-out infinite;
+}
+
+/* God-rays effect */
+.god-rays {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    animation: godRays 8s ease-in-out 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes godRays {
+    0%, 100% {
+        opacity: 0;
+        background: none;
+    }
+    50% {
+        opacity: 0.15;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 25%,
+            transparent 40%,
+            rgba(255, 255, 255, 0.08) 60%,
+            transparent 80%,
+            rgba(255, 255, 255, 0.1) 100%
+        );
+    }
+}
+
+/* Empyrea Header */
+.empyrea-header {
+    position: relative;
+    overflow: hidden;
+}
+
+.empyrea-header .god-rays {
+    animation: godRays 10s ease-in-out 2s infinite;
+}
+
+.empyrea-header h1 {
+    color: #5faa6f;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.empyrea-header p {
+    color: #7dd185;
+}
+
+/* Intro Section */
+.empyrea-intro {
+    background: #1a1a1a;
+    border-bottom: 2px solid rgba(95, 170, 111, 0.3);
+}
+
+.empyrea-intro h2 {
+    color: #5faa6f;
+}
+
+.empyrea-intro p {
+    color: #d8e8dc;
+}
+
+/* Features Section */
+.empyrea-features {
+    background: #1a1a1a;
+    border-top: 2px solid rgba(95, 170, 111, 0.3);
+    border-bottom: 2px solid rgba(95, 170, 111, 0.3);
+}
+
+.empyrea-features h2 {
+    color: #5faa6f;
+}
+
+.empyrea-features .feature-box {
+    background: linear-gradient(135deg, rgba(95, 170, 111, 0.15) 0%, rgba(26, 38, 32, 0.8) 100%);
+    border-left: 4px solid #5faa6f;
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.empyrea-features .feature-box:hover {
+    background: linear-gradient(135deg, rgba(95, 170, 111, 0.25) 0%, rgba(26, 38, 32, 0.9) 100%);
+    box-shadow: 0 8px 20px rgba(95, 170, 111, 0.2);
+    transform: translateY(-3px);
+}
+
+.empyrea-features .feature-box h3 {
+    color: #7dd185;
+}
+
+.empyrea-features .feature-box p {
+    color: #d8e8dc;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Magic Section */
+.empyrea-magic {
+    background: #1a1a1a;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.empyrea-magic h2 {
+    color: #5faa6f;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.empyrea-magic > .container > p {
+    text-align: center;
+    color: #d8e8dc;
+    margin-bottom: 2rem;
+}
+
+.magic-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.magic-spell {
+    background: rgba(95, 170, 111, 0.1);
+    border: 2px solid rgba(95, 170, 111, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.magic-spell:hover {
+    background: rgba(95, 170, 111, 0.2);
+    border-color: #5faa6f;
+    box-shadow: 0 4px 15px rgba(95, 170, 111, 0.2);
+}
+
+.magic-spell h3 {
+    color: #7dd185;
+    margin-bottom: 0.5rem;
+}
+
+.magic-spell p {
+    color: #d8e8dc;
+    font-size: 0.95rem;
+}
+
+/* Territory Section */
+.empyrea-territory {
+    background: #1a1a1a;
+    border-top: 2px solid rgba(95, 170, 111, 0.3);
+    border-bottom: 2px solid rgba(95, 170, 111, 0.3);
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.empyrea-territory h2 {
+    color: #5faa6f;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.empyrea-territory > .container > p {
+    text-align: center;
+    color: #d8e8dc;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.territory-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.territory-item {
+    background: rgba(95, 170, 111, 0.08);
+    border: 1px solid rgba(95, 170, 111, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.territory-item:hover {
+    background: rgba(95, 170, 111, 0.15);
+    border-color: #5faa6f;
+}
+
+.territory-item h3 {
+    color: #7dd185;
+    margin-bottom: 0.5rem;
+}
+
+.territory-item p {
+    color: #d8e8dc;
+    font-size: 0.95rem;
+}
+
+/* Roles Section */
+.empyrea-roles {
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.empyrea-roles h2 {
+    color: #5faa6f;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.empyrea-roles > .container > p {
+    text-align: center;
+    color: #d8e8dc;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.role {
+    background: rgba(95, 170, 111, 0.1);
+    border: 2px solid rgba(95, 170, 111, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.role:hover {
+    background: rgba(95, 170, 111, 0.2);
+    border-color: #5faa6f;
+    box-shadow: 0 6px 20px rgba(95, 170, 111, 0.2);
+}
+
+.role h3 {
+    color: #7dd185;
+    margin-bottom: 0.5rem;
+}
+
+.role p {
+    color: #d8e8dc;
+    font-size: 0.95rem;
+}
+
+.cta-section {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(95, 170, 111, 0.3);
+}
+
+.cta-section .cta-button {
+    background: linear-gradient(135deg, #5faa6f 0%, #3d7a4d 100%);
+    border-color: #5faa6f;
+    color: #fff;
+}
+
+.cta-section .cta-button:hover {
+    background: linear-gradient(135deg, #7dd185 0%, #5faa6f 100%);
+    box-shadow: 0 6px 20px rgba(95, 170, 111, 0.4);
+}
+
+@media (max-width: 768px) {
+    .empyrea-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .magic-types {
+        grid-template-columns: 1fr;
+    }
+
+    .territory-list {
+        grid-template-columns: 1fr;
+    }
+
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+}

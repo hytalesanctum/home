@@ -1,0 +1,275 @@
+/* Zephyria Civilization Styling */
+
+.zephyria-body {
+    background: linear-gradient(135deg, #3d3420 0%, #2a241a 50%, #3d3420 100%);
+    background-attachment: fixed;
+}
+
+.zephyria-body::before {
+    animation: breathing 6s ease-in-out infinite;
+}
+
+/* Zephyria Header */
+.zephyria-header {
+    position: relative;
+    overflow: hidden;
+}
+
+.zephyria-header h1 {
+    color: #d4a961;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.zephyria-header p {
+    color: #e6bf7a;
+}
+
+/* Intro Section */
+.zephyria-intro {
+    background: #1a1a1a;
+    border-bottom: 2px solid rgba(201, 169, 97, 0.3);
+}
+
+.zephyria-intro h2 {
+    color: #d4a961;
+}
+
+.zephyria-intro p {
+    color: #e6d9c3;
+}
+
+/* Features Section */
+.zephyria-features {
+    background: #1a1a1a;
+    border-top: 2px solid rgba(201, 169, 97, 0.3);
+    border-bottom: 2px solid rgba(201, 169, 97, 0.3);
+}
+
+.zephyria-features h2 {
+    color: #d4a961;
+}
+
+.zephyria-features .feature-box {
+    background: linear-gradient(135deg, rgba(201, 169, 97, 0.15) 0%, rgba(58, 51, 38, 0.8) 100%);
+    border-left: 4px solid #d4a961;
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.zephyria-features .feature-box:hover {
+    background: linear-gradient(135deg, rgba(201, 169, 97, 0.25) 0%, rgba(58, 51, 38, 0.9) 100%);
+    box-shadow: 0 8px 20px rgba(201, 169, 97, 0.2);
+    transform: translateY(-3px);
+}
+
+.zephyria-features .feature-box h3 {
+    color: #e6bf7a;
+}
+
+.zephyria-features .feature-box p {
+    color: #e6d9c3;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Magic Section */
+.zephyria-magic {
+    background: #1a1a1a;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.zephyria-magic h2 {
+    color: #d4a961;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.zephyria-magic > .container > p {
+    text-align: center;
+    color: #e6d9c3;
+    margin-bottom: 2rem;
+}
+
+.magic-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.magic-spell {
+    background: rgba(201, 169, 97, 0.1);
+    border: 2px solid rgba(201, 169, 97, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.magic-spell:hover {
+    background: rgba(201, 169, 97, 0.2);
+    border-color: #d4a961;
+    box-shadow: 0 4px 15px rgba(201, 169, 97, 0.2);
+}
+
+.magic-spell h3 {
+    color: #e6bf7a;
+    margin-bottom: 0.5rem;
+}
+
+.magic-spell p {
+    color: #e6d9c3;
+    font-size: 0.95rem;
+}
+
+/* Territory Section */
+.zephyria-territory {
+    background: #1a1a1a;
+    border-top: 2px solid rgba(201, 169, 97, 0.3);
+    border-bottom: 2px solid rgba(201, 169, 97, 0.3);
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.zephyria-territory h2 {
+    color: #d4a961;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.zephyria-territory > .container > p {
+    text-align: center;
+    color: #e6d9c3;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.territory-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.territory-item {
+    background: rgba(201, 169, 97, 0.08);
+    border: 1px solid rgba(201, 169, 97, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.territory-item:hover {
+    background: rgba(201, 169, 97, 0.15);
+    border-color: #d4a961;
+}
+
+.territory-item h3 {
+    color: #e6bf7a;
+    margin-bottom: 0.5rem;
+}
+
+.territory-item p {
+    color: #e6d9c3;
+    font-size: 0.95rem;
+}
+
+/* Roles Section */
+.zephyria-roles {
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.zephyria-roles h2 {
+    color: #d4a961;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.zephyria-roles > .container > p {
+    text-align: center;
+    color: #e6d9c3;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.role {
+    background: rgba(201, 169, 97, 0.1);
+    border: 2px solid rgba(201, 169, 97, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.role:hover {
+    background: rgba(201, 169, 97, 0.2);
+    border-color: #d4a961;
+    box-shadow: 0 6px 20px rgba(201, 169, 97, 0.2);
+}
+
+.role h3 {
+    color: #e6bf7a;
+    margin-bottom: 0.5rem;
+}
+
+.role p {
+    color: #e6d9c3;
+    font-size: 0.95rem;
+}
+
+.cta-section {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(201, 169, 97, 0.3);
+}
+
+.cta-section .cta-button {
+    background: linear-gradient(135deg, #d4a961 0%, #a8860f 100%);
+    border-color: #d4a961;
+    color: #fff;
+}
+
+.cta-section .cta-button:hover {
+    background: linear-gradient(135deg, #e6bf7a 0%, #d4a961 100%);
+    box-shadow: 0 6px 20px rgba(201, 169, 97, 0.4);
+}
+
+@media (max-width: 768px) {
+    .zephyria-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .magic-types {
+        grid-template-columns: 1fr;
+    }
+
+    .territory-list {
+        grid-template-columns: 1fr;
+    }
+
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+}

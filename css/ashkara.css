@@ -1,0 +1,366 @@
+/* Ashkara Civilization Styling */
+
+.ashkara-body {
+    background: linear-gradient(135deg, #3a1818 0%, #1a0f0f 50%, #3a1818 100%);
+    background-attachment: fixed;
+}
+
+.ashkara-body::before {
+    animation: breathing 6s ease-in-out infinite;
+}
+
+/* Ember Particle System */
+@keyframes float-up {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+        opacity: 0;
+    }
+    2% {
+        opacity: 1;
+        transform: translateY(-2vh) translateX(2px) rotate(15deg) scale(0.9);
+    }
+    5% {
+        transform: translateY(-5vh) translateX(-3px) rotate(35deg) scale(0.95);
+    }
+    8% {
+        transform: translateY(-8vh) translateX(3px) rotate(55deg) scale(1);
+    }
+    12% {
+        transform: translateY(-12vh) translateX(-2px) rotate(80deg) scale(0.92);
+    }
+    16% {
+        transform: translateY(-16vh) translateX(2px) rotate(110deg) scale(0.98);
+    }
+    20% {
+        transform: translateY(-20vh) translateX(-1px) rotate(140deg) scale(1.05);
+    }
+    25% {
+        transform: translateY(-25vh) translateX(3px) rotate(170deg) scale(0.9);
+    }
+    30% {
+        transform: translateY(-30vh) translateX(-3px) rotate(200deg) scale(0.95);
+    }
+    40% {
+        transform: translateY(-40vh) translateX(-2px) rotate(270deg) scale(1.03);
+    }
+    50% {
+        transform: translateY(-50vh) translateX(-1px) rotate(340deg) scale(0.98);
+        opacity: 0.9;
+    }
+    60% {
+        transform: translateY(-60vh) translateX(-2px) rotate(410deg) scale(0.96);
+        opacity: 0.7;
+    }
+    70% {
+        transform: translateY(-70vh) translateX(-3px) rotate(480deg) scale(0.94);
+        opacity: 0.4;
+    }
+    80% {
+        transform: translateY(-80vh) translateX(-1px) rotate(550deg) scale(0.99);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(0px) rotate(660deg) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes flicker {
+    0%, 100% { box-shadow: 0 0 8px #ff6b1a, 0 0 16px rgba(255, 107, 26, 0.5); }
+    25% { box-shadow: 0 0 12px #ff8c1a, 0 0 20px rgba(255, 140, 26, 0.6); }
+    50% { box-shadow: 0 0 4px #ff4b1a, 0 0 8px rgba(255, 75, 26, 0.3); }
+    75% { box-shadow: 0 0 10px #ff6b1a, 0 0 18px rgba(255, 107, 26, 0.55); }
+}
+
+#ember-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.ember {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ff6b1a, #d84a1a);
+    box-shadow: 0 0 8px #ff6b1a, 0 0 16px rgba(255, 107, 26, 0.5);
+    pointer-events: none;
+    z-index: 1;
+    will-change: transform;
+    filter: blur(0.5px);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: flicker 0.3s ease-in-out infinite;
+}
+
+/* Ashkara Header */
+.ashkara-header {
+    position: relative;
+    overflow: hidden;
+}
+
+.ashkara-header h1 {
+    color: #d84a4a;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.ashkara-header p {
+    color: #ff6b6b;
+}
+
+/* Intro Section */
+.ashkara-intro {
+    background: #1a1a1a;
+    border-bottom: 2px solid rgba(139, 46, 46, 0.3);
+}
+
+.ashkara-intro h2 {
+    color: #d84a4a;
+}
+
+.ashkara-intro p {
+    color: #f5d0d0;
+}
+
+/* Features Section */
+.ashkara-features {
+    background: #1a1a1a;
+    border-top: 2px solid rgba(139, 46, 46, 0.3);
+    border-bottom: 2px solid rgba(139, 46, 46, 0.3);
+}
+
+.ashkara-features h2 {
+    color: #d84a4a;
+}
+
+.ashkara-features .feature-box {
+    background: linear-gradient(135deg, rgba(139, 46, 46, 0.15) 0%, rgba(58, 24, 24, 0.8) 100%);
+    border-left: 4px solid #d84a4a;
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.ashkara-features .feature-box:hover {
+    background: linear-gradient(135deg, rgba(139, 46, 46, 0.25) 0%, rgba(58, 24, 24, 0.9) 100%);
+    box-shadow: 0 8px 20px rgba(139, 46, 46, 0.2);
+    transform: translateY(-3px);
+}
+
+.ashkara-features .feature-box h3 {
+    color: #ff6b6b;
+}
+
+.ashkara-features .feature-box p {
+    color: #f5d0d0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Magic Section */
+.ashkara-magic {
+    background: #1a1a1a;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.ashkara-magic h2 {
+    color: #d84a4a;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.ashkara-magic > .container > p {
+    text-align: center;
+    color: #f5d0d0;
+    margin-bottom: 2rem;
+}
+
+.magic-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.magic-spell {
+    background: rgba(139, 46, 46, 0.1);
+    border: 2px solid rgba(139, 46, 46, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.magic-spell:hover {
+    background: rgba(139, 46, 46, 0.2);
+    border-color: #d84a4a;
+    box-shadow: 0 4px 15px rgba(139, 46, 46, 0.2);
+}
+
+.magic-spell h3 {
+    color: #ff6b6b;
+    margin-bottom: 0.5rem;
+}
+
+.magic-spell p {
+    color: #f5d0d0;
+    font-size: 0.95rem;
+}
+
+/* Territory Section */
+.ashkara-territory {
+    background: #1a1a1a;
+    border-top: 2px solid rgba(139, 46, 46, 0.3);
+    border-bottom: 2px solid rgba(139, 46, 46, 0.3);
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.ashkara-territory h2 {
+    color: #d84a4a;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.ashkara-territory > .container > p {
+    text-align: center;
+    color: #f5d0d0;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.territory-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.territory-item {
+    background: rgba(139, 46, 46, 0.08);
+    border: 1px solid rgba(139, 46, 46, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.territory-item:hover {
+    background: rgba(139, 46, 46, 0.15);
+    border-color: #d84a4a;
+}
+
+.territory-item h3 {
+    color: #ff6b6b;
+    margin-bottom: 0.5rem;
+}
+
+.territory-item p {
+    color: #f5d0d0;
+    font-size: 0.95rem;
+}
+
+/* Roles Section */
+.ashkara-roles {
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.ashkara-roles h2 {
+    color: #d84a4a;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.ashkara-roles > .container > p {
+    text-align: center;
+    color: #f5d0d0;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.role {
+    background: rgba(139, 46, 46, 0.1);
+    border: 2px solid rgba(139, 46, 46, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.role:hover {
+    background: rgba(139, 46, 46, 0.2);
+    border-color: #d84a4a;
+    box-shadow: 0 6px 20px rgba(139, 46, 46, 0.2);
+}
+
+.role h3 {
+    color: #ff6b6b;
+    margin-bottom: 0.5rem;
+}
+
+.role p {
+    color: #f5d0d0;
+    font-size: 0.95rem;
+}
+
+.cta-section {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(139, 46, 46, 0.3);
+}
+
+.cta-section .cta-button {
+    background: linear-gradient(135deg, #d84a4a 0%, #8b2e2e 100%);
+    border-color: #d84a4a;
+    color: #fff;
+}
+
+.cta-section .cta-button:hover {
+    background: linear-gradient(135deg, #ff6b6b 0%, #d84a4a 100%);
+    box-shadow: 0 6px 20px rgba(139, 46, 46, 0.4);
+}
+
+@media (max-width: 768px) {
+    .ashkara-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .magic-types {
+        grid-template-columns: 1fr;
+    }
+
+    .territory-list {
+        grid-template-columns: 1fr;
+    }
+
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+}

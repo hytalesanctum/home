@@ -1,0 +1,145 @@
+/* Legal Page Styling */
+
+/* Revert headings to Georgia for legal pages */
+.legal-section h2,
+.legal-section h3 {
+    font-family: 'Georgia', serif;
+}
+
+.legal-nav .nav-list a {
+    font-family: 'Georgia', serif;
+}
+
+.legal-nav {
+    background: rgba(26, 26, 26, 0.8);
+    border-top: 2px solid rgba(212, 175, 55, 0.3);
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    padding: 2rem 0;
+    position: relative;
+    z-index: 1;
+    sticky: top;
+}
+
+.nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.nav-list a {
+    color: #d4af37;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.nav-list a:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: #d4af37;
+    color: #f5c547;
+}
+
+/* Legal Content */
+.legal-content {
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.legal-section {
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background: rgba(26, 26, 26, 0.5);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    border-left: 4px solid #d4af37;
+}
+
+.legal-section h2 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.legal-section h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.legal-section p {
+    color: #ddd;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.legal-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1rem;
+}
+
+.legal-section li {
+    color: #ddd;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.legal-section li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #d4af37;
+}
+
+.content {
+    color: #ddd;
+}
+
+.content strong {
+    color: #f5c547;
+}
+
+/* Scroll to top link styling */
+a[href^="#"] {
+    transition: all 0.3s ease;
+}
+
+a[href^="#"]:hover {
+    color: #f5c547;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-list {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav-list a {
+        text-align: center;
+    }
+
+    .legal-section {
+        padding: 1.5rem;
+    }
+
+    .legal-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .legal-section h3 {
+        font-size: 1rem;
+    }
+
+    .legal-section li {
+        padding-left: 1.25rem;
+        font-size: 0.9rem;
+    }
+}

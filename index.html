@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanctum - A Hytale Civilization Server</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><img src="images/logo full.png" alt="Sanctum Logo" class="logo-img"></div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="world.html">World</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Civilizations</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="empyrea.html">Empyrea</a></li>
+                        <li><a href="zephyria.html">Zephyria</a></li>
+                        <li><a href="pagorea.html">Pagorea</a></li>
+                        <li><a href="ashkara.html">Ashkara</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Sanctum</h1>
+            <p>A Hytale Civilization Server</p>
+            <p class="subtitle">Choose your empire. Shape your destiny.</p>
+            <a href="world.html" class="cta-button">Explore the Realm</a>
+        </div>
+    </header>
+
+    <section class="intro">
+        <div class="container">
+            <h2>Four Empires Await</h2>
+            <p>Sanctum is home to four magnificent civilizations, each with its own culture, magic, and destiny. Will you join Empyrea's verdant forests, Zephyria's golden deserts, Pagorea's frozen tundras, or Ashkara's volcanic forges?</p>
+        </div>
+    </section>
+
+    <section class="civilizations-preview">
+        <div class="container">
+            <div class="civ-card">
+                <div class="civ-icon">🌿</div>
+                <h3>Empyrea</h3>
+                <p>Masters of nature and harmony</p>
+                <a href="empyrea.html">Learn More →</a>
+            </div>
+            <div class="civ-card">
+                <div class="civ-icon">☀️</div>
+                <h3>Zephyria</h3>
+                <p>Rulers of wind and endless horizons</p>
+                <a href="zephyria.html">Learn More →</a>
+            </div>
+            <div class="civ-card">
+                <div class="civ-icon">❄️</div>
+                <h3>Pagorea</h3>
+                <p>Mystics of frost and ancient ice</p>
+                <a href="pagorea.html">Learn More →</a>
+            </div>
+            <div class="civ-card">
+                <div class="civ-icon">☄️</div>
+                <h3>Ashkara</h3>
+                <p>Forgers of fire and survival</p>
+                <a href="ashkara.html">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Server Features</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>Civilization System</h3>
+                    <p>Join one of four unique civilizations with distinct cultures, territories, and progression paths.</p>
+                </div>
+                <div class="feature">
+                    <h3>Immersive Gameplay</h3>
+                    <p>Experience crafted landscapes, dungeons, quests, and mysteries across the world of Orbis.</p>
+                </div>
+                <div class="feature">
+                    <h3>Community Driven</h3>
+                    <p>Build alliances, trade resources, and create history with other players in your civilization.</p>
+                </div>
+                <div class="feature">
+                    <h3>Seasonal Events</h3>
+                    <p>Participate in civilization-wide events, wars, festivals, and legendary challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Sanctum - A Hytale Server. All rights reserved.</p>
+            <p><a href="legal.html#copyright">Copyright</a> | <a href="legal.html#eula">EULA</a> | <a href="legal.html#tos">Terms of Service</a> | <a href="legal.html#privacy">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Parallax scrolling effect
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            document.documentElement.style.setProperty('--scroll-offset', scrollPosition * 0.5 + 'px');
+        });
+
+        // Function to position dropdown menu
+        function positionDropdownMenu(toggle) {
+            const menu = toggle.closest('.dropdown').querySelector('.dropdown-menu');
+            if (!menu) return;
+            
+            const toggleRect = toggle.getBoundingClientRect();
+            const menuRect = menu.getBoundingClientRect();
+            
+            // Center the menu horizontally under the toggle
+            const centerX = toggleRect.left + toggleRect.width / 2;
+            const leftPosition = centerX - menuRect.width / 2;
+            
+            menu.style.left = leftPosition + 'px';
+            menu.style.top = (toggleRect.bottom) + 'px';
+        }
+
+        // Dropdown menu functionality
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdown = toggle.closest('.dropdown');
+                dropdown.classList.toggle('active');
+                
+                if (dropdown.classList.contains('active')) {
+                    positionDropdownMenu(toggle);
+                }
+                
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('active');
+                    }
+                });
+            });
+
+            // Position menu on hover
+            toggle.addEventListener('mouseenter', () => {
+                const dropdown = toggle.closest('.dropdown');
+                if (dropdown.classList.contains('active') || window.innerWidth > 768) {
+                    positionDropdownMenu(toggle);
+                }
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    d.classList.remove('active');
+                });
+            }
+        });
+
+        // Reposition on window resize
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.dropdown.active .dropdown-toggle').forEach(toggle => {
+                positionDropdownMenu(toggle);
+            });
+        });
+    </script>
+</body>
+</html>

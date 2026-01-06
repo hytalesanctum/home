@@ -1,0 +1,22 @@
+title: Sanctum - A Hytale Civilization Server
+description: Experience four unique civilizations in an ancient Greek-themed Hytale server. Master the verdant forests of Empyrea, golden deserts of Zephyria, frozen lands of Pagorea, or volcanic empire of Ashkara.
+theme: jekyll-theme-slate
+
+# GitHub Pages Configuration
+# This file helps customize your GitHub Pages site
+# Documentation: https://docs.github.com/en/pages
+
+# Site settings
+url: "https://hytalesanctum.com"  # Update with your custom domain
+baseurl: ""
+
+# GitHub Pages settings
+lsi: false
+safe: true
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
