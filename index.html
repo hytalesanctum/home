@@ -32,7 +32,16 @@
             <h1>Welcome to Sanctum</h1>
             <p>A Hytale Civilization Server</p>
             <p class="subtitle">Choose your empire. Shape your destiny.</p>
-            <a href="world.html" class="cta-button">Explore the Realm</a>
+            <div class="flip-card" id="joinCard">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        JOIN NOW
+                    </div>
+                    <div class="flip-card-back">
+                        play.sanctum.hytale
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -169,6 +178,59 @@
                 positionDropdownMenu(toggle);
             });
         });
+
+        // Flip card animation and copy to clipboard
+        const flipCard = document.getElementById('joinCard');
+        const flipCardBack = flipCard.querySelector('.flip-card-back');
+        let isFlipped = false;
+        
+        flipCard.style.cursor = 'pointer';
+        flipCard.addEventListener('click', function(e) {
+            if (!isFlipped) {
+                // First click: flip the card
+                flipCard.classList.add('flipped');
+                isFlipped = true;
+                flipCard.style.cursor = 'pointer';
+            } else {
+                // Second click: copy to clipboard
+                const ip = 'play.sanctum.hytale';
+                try {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(ip).then(function() {
+                            const originalText = flipCardBack.textContent;
+                            flipCardBack.textContent = 'COPIED!';
+                            setTimeout(function() {
+                                flipCardBack.textContent = originalText;
+                            }, 1500);
+                        }).catch(function(err) {
+                            console.error('Clipboard write failed:', err);
+                            // Fallback method
+                            copyToClipboardFallback(ip);
+                        });
+                    } else {
+                        copyToClipboardFallback(ip);
+                    }
+                } catch(err) {
+                    console.error('Error:', err);
+                    copyToClipboardFallback(ip);
+                }
+            }
+        });
+        
+        // Fallback copy method
+        function copyToClipboardFallback(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            const originalText = flipCardBack.textContent;
+            flipCardBack.textContent = 'COPIED!';
+            setTimeout(function() {
+                flipCardBack.textContent = originalText;
+            }, 1500);
+        }
     </script>
 </body>
 </html>

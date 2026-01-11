@@ -1,9 +1,41 @@
+@keyframes storm-drift-slow {
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+body::after {
+    content: none;
+}
+
+.cloud-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -0.5;
+    object-fit: cover;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
 /* Hero Section */
 .hero {
     padding: 8rem 2rem;
     text-align: center;
     position: relative;
     overflow: hidden;
+}
+
+body::before {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 30%),
+        linear-gradient(225deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+        linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 20%, #2a2a2a 50%, #1a1a1a 80%, #0a0a0a 100%) !important;
+    background-attachment: fixed !important;
+    box-shadow: inset -40px -40px 80px rgba(255, 255, 255, 0.1), inset 40px 40px 80px rgba(0, 0, 0, 0.5);
 }
 
 .hero::before {
@@ -46,10 +78,84 @@
     margin-top: 1rem;
 }
 
+/* Flip Card Animation */
+@keyframes flipCard {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+.flip-card {
+    perspective: 1000px;
+    margin: 1rem auto 0;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.flip-card-inner {
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateX(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flip-card-front {
+    color: #000;
+    padding: 1rem 5rem;
+    background: linear-gradient(135deg, #d4af37 0%, #a8860f 100%);
+    border: 2px solid #d4af37;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+.flip-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 30%),
+                linear-gradient(225deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+                linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 20%, #0a0a0a 50%, #1a1a1a 80%, #2a2a2a 100%);
+    color: #d4af37;
+    transform: rotateX(180deg);
+    padding: 1rem 5rem;
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    border-radius: 4px;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* Intro Section */
 .intro {
     padding: 4rem 2rem;
     background: #1a1a1a;
+    background-image:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4" result="noise" seed="2" /></filter><rect width="100" height="100" fill="%231a1a1a" filter="url(%23noise)" opacity="0.08"/></svg>');
     border-top: 2px solid rgba(212, 175, 55, 0.3);
     border-bottom: 2px solid rgba(212, 175, 55, 0.3);
     text-align: center;
@@ -59,6 +165,8 @@
 
 .intro h2 {
     margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .intro p {
@@ -66,6 +174,8 @@
     margin: 0 auto;
     font-size: 1.1rem;
     color: #ddd;
+    position: relative;
+    z-index: 1;
 }
 
 /* Civilizations Preview */
@@ -79,6 +189,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .civ-card {
@@ -157,6 +269,8 @@
 .features {
     padding: 4rem 2rem;
     background: #1a1a1a;
+    background-image:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4" result="noise" seed="2" /></filter><rect width="100" height="100" fill="%231a1a1a" filter="url(%23noise)" opacity="0.08"/></svg>');
     border-top: 2px solid rgba(212, 175, 55, 0.3);
     border-bottom: 2px solid rgba(212, 175, 55, 0.3);
     position: relative;
@@ -166,12 +280,16 @@
 .features h2 {
     text-align: center;
     margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
 }
 
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .feature {

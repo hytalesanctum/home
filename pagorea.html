@@ -107,7 +107,16 @@
             </div>
 
             <div class="cta-section">
-                <a href="world.html" class="cta-button">Choose Pagorea</a>
+                <div class="flip-card" id="pagoreCard">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            CHOOSE PAGOREA
+                        </div>
+                        <div class="flip-card-back">
+                            play.sanctum.hytale
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -127,7 +136,7 @@
                 snowflake.className = 'snowflake';
                 snowflake.textContent = '❄';
                 
-                const duration = 12 + Math.random() * 6; // 12-18 seconds
+                const duration = 30 + Math.random() * 15; // 30-45 seconds
                 const delay = Math.random() * 0.5;
                 const xPos = Math.random() * window.innerWidth;
                 const drift = (Math.random() - 0.5) * 120; // More drift than leaves
@@ -204,6 +213,56 @@
                 positionDropdownMenu(toggle);
             });
         });
+
+        // Flip card animation and copy to clipboard
+        const flipCard = document.getElementById('pagoreCard');
+        if (flipCard) {
+            const flipCardBack = flipCard.querySelector('.flip-card-back');
+            let isFlipped = false;
+            
+            flipCard.style.cursor = 'pointer';
+            flipCard.addEventListener('click', function(e) {
+                if (!isFlipped) {
+                    flipCard.classList.add('flipped');
+                    isFlipped = true;
+                } else {
+                    const ip = 'play.sanctum.hytale';
+                    try {
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(ip).then(function() {
+                                const originalText = flipCardBack.textContent;
+                                flipCardBack.textContent = 'COPIED!';
+                                setTimeout(function() {
+                                    flipCardBack.textContent = originalText;
+                                }, 1500);
+                            }).catch(function(err) {
+                                console.error('Clipboard write failed:', err);
+                                copyToClipboardFallback(ip, flipCardBack);
+                            });
+                        } else {
+                            copyToClipboardFallback(ip, flipCardBack);
+                        }
+                    } catch(err) {
+                        console.error('Error:', err);
+                        copyToClipboardFallback(ip, flipCardBack);
+                    }
+                }
+            });
+        }
+        
+        function copyToClipboardFallback(text, flipCardBack) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            const originalText = flipCardBack.textContent;
+            flipCardBack.textContent = 'COPIED!';
+            setTimeout(function() {
+                flipCardBack.textContent = originalText;
+            }, 1500);
+        }
     </script>
     <script src="js/tilt.js"></script>
 </body>

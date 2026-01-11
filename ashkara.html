@@ -107,7 +107,16 @@
             </div>
 
             <div class="cta-section">
-                <a href="world.html" class="cta-button">Choose Ashkara</a>
+                <div class="flip-card" id="ashkaraCard">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            CHOOSE ASHKARA
+                        </div>
+                        <div class="flip-card-back">
+                            play.sanctum.hytale
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -180,13 +189,27 @@
             });
         });
 
+        // Get footer spawn position once
+        const footer = document.querySelector('footer');
+        const footerSpawnY = footer ? footer.offsetTop + 560 : window.innerHeight;
+        
+        // Get The Crimson Expanse section position
+        const crimsonExpanse = document.querySelector('.staggered-image-left h3');
+        let fadeStartPercent = 50;
+        if (crimsonExpanse) {
+            const crimsonY = crimsonExpanse.parentElement.offsetTop;
+            const distanceToCrimson = footerSpawnY - crimsonY;
+            const totalTravelPixels = 270 * window.innerHeight / 100;
+            fadeStartPercent = (distanceToCrimson / totalTravelPixels) * 100 * 0.85; // Start fading earlier
+        }
+
         // Spawn embers with 80% chance every second (more numerous)
         setInterval(() => {
-            if (Math.random() < 0.8) {
+            if (Math.random() < 0.95) {
                 const ember = document.createElement('div');
                 ember.className = 'ember';
                 
-                const duration = 8 + Math.random() * 6; // 8-14 seconds
+                const duration = 20 + Math.random() * 15; // 20-35 seconds
                 const delay = Math.random() * 0.5;
                 
                 // Spawn from edges (left/right sides)
@@ -201,9 +224,25 @@
                 xPos = Math.max(5, Math.min(window.innerWidth - 5, xPos)); // Clamp to safe zone
                 
                 ember.style.left = xPos + 'px';
-                ember.style.top = window.innerHeight + 'px';
-                // Use linear for consistent smooth motion without speed changes
-                ember.style.animation = `float-up ${duration}s linear ${delay}s forwards`;
+                ember.style.top = footerSpawnY + 'px';
+                
+                // Create dynamic animation with calculated fade point
+                const animationName = `float-up-${Math.random().toString(36).substr(2, 9)}`;
+                const keyframes = `
+                    @keyframes ${animationName} {
+                        0% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); opacity: 0; }
+                        2% { opacity: 1; }
+                        ${Math.min(fadeStartPercent, 95)}% { opacity: 1; }
+                        ${Math.min(fadeStartPercent + 20, 100)}% { opacity: 0; }
+                        100% { transform: translateY(-270vh) translateX(0px) rotate(660deg) scale(1); opacity: 0; }
+                    }
+                `;
+                
+                const style = document.createElement('style');
+                style.textContent = keyframes;
+                document.head.appendChild(style);
+                
+                ember.style.animation = `${animationName} ${duration}s linear ${delay}s forwards`;
                 
                 // Randomize shape with more variations
                 const shapeVariations = [
@@ -217,7 +256,7 @@
                 ember.style.clipPath = shapeVariations[Math.floor(Math.random() * shapeVariations.length)];
                 
                 console.log('Ember spawned at x:', xPos);
-                document.getElementById('ember-container').appendChild(ember);
+                document.body.appendChild(ember);
                 
                 // Remove ember after animation completes
                 setTimeout(() => {
@@ -225,6 +264,56 @@
                 }, (duration + delay) * 1000 + 500);
             }
         }, 1000);
+
+        // Flip card animation and copy to clipboard
+        const flipCard = document.getElementById('ashkaraCard');
+        if (flipCard) {
+            const flipCardBack = flipCard.querySelector('.flip-card-back');
+            let isFlipped = false;
+            
+            flipCard.style.cursor = 'pointer';
+            flipCard.addEventListener('click', function(e) {
+                if (!isFlipped) {
+                    flipCard.classList.add('flipped');
+                    isFlipped = true;
+                } else {
+                    const ip = 'play.sanctum.hytale';
+                    try {
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(ip).then(function() {
+                                const originalText = flipCardBack.textContent;
+                                flipCardBack.textContent = 'COPIED!';
+                                setTimeout(function() {
+                                    flipCardBack.textContent = originalText;
+                                }, 1500);
+                            }).catch(function(err) {
+                                console.error('Clipboard write failed:', err);
+                                copyToClipboardFallback(ip, flipCardBack);
+                            });
+                        } else {
+                            copyToClipboardFallback(ip, flipCardBack);
+                        }
+                    } catch(err) {
+                        console.error('Error:', err);
+                        copyToClipboardFallback(ip, flipCardBack);
+                    }
+                }
+            });
+        }
+        
+        function copyToClipboardFallback(text, flipCardBack) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            const originalText = flipCardBack.textContent;
+            flipCardBack.textContent = 'COPIED!';
+            setTimeout(function() {
+                flipCardBack.textContent = originalText;
+            }, 1500);
+        }
     </script>
     <script src="js/tilt.js"></script>
 </body>

@@ -1,5 +1,14 @@
 /* Legal Page Styling */
 
+body::before {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 30%),
+        linear-gradient(225deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+        linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 20%, #2a2a2a 50%, #1a1a1a 80%, #1a1a1a 100%) !important;
+    background-attachment: fixed !important;
+    box-shadow: inset -40px -40px 80px rgba(255, 255, 255, 0.1), inset 40px 40px 80px rgba(0, 0, 0, 0.5);
+}
+
 /* Revert headings to Georgia for legal pages */
 .legal-section h2,
 .legal-section h3 {
@@ -12,6 +21,8 @@
 
 .legal-nav {
     background: rgba(26, 26, 26, 0.8);
+    background-image:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4" result="noise" seed="2" /></filter><rect width="100" height="100" fill="%231a1a1a" filter="url(%23noise)" opacity="0.08"/></svg>');
     border-top: 2px solid rgba(212, 175, 55, 0.3);
     border-bottom: 2px solid rgba(212, 175, 55, 0.3);
     padding: 2rem 0;

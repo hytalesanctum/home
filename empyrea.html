@@ -107,7 +107,16 @@
             </div>
 
             <div class="cta-section">
-                <a href="world.html" class="cta-button">Choose Empyrea</a>
+                <div class="flip-card" id="empyreaCard">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            CHOOSE EMPYREA
+                        </div>
+                        <div class="flip-card-back">
+                            play.sanctum.hytale
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -124,13 +133,17 @@
             const leaf = document.createElement('div');
             leaf.className = 'falling-leaf';
             
-            const duration = 20 + Math.random() * 10; // 20-30 seconds
+            const duration = 40 + Math.random() * 15; // 40-55 seconds
             const delay = Math.random() * 0.5;
             const xPos = Math.random() * window.innerWidth;
             const drift = (Math.random() - 0.5) * 80; // Subtle left/right drift
+            const rotation = Math.random() * 360; // Random rotation
+            const scaleX = Math.random() < 0.5 ? -1 : 1; // Random flip
             
             leaf.style.left = xPos + 'px';
             leaf.style.setProperty('--drift', drift + 'px');
+            leaf.style.setProperty('--rotation', rotation + 'deg');
+            leaf.style.setProperty('--scaleX', scaleX);
             leaf.style.animation = `fall ${duration}s linear ${delay}s forwards`;
             
             document.body.appendChild(leaf);
@@ -140,8 +153,9 @@
             }, (duration + delay) * 1000 + 500);
         }
 
-        // Spawn leaves occasionally
-        setInterval(createFallingLeaf, 3000 + Math.random() * 2000);
+        // Spawn leaves immediately and then occasionally
+        createFallingLeaf();
+        setInterval(createFallingLeaf, 1500 + Math.random() * 1000);
 
         // Function to position dropdown menu
         function positionDropdownMenu(toggle) {
@@ -202,6 +216,56 @@
                 positionDropdownMenu(toggle);
             });
         });
+
+        // Flip card animation and copy to clipboard
+        const flipCard = document.getElementById('empyreaCard');
+        if (flipCard) {
+            const flipCardBack = flipCard.querySelector('.flip-card-back');
+            let isFlipped = false;
+            
+            flipCard.style.cursor = 'pointer';
+            flipCard.addEventListener('click', function(e) {
+                if (!isFlipped) {
+                    flipCard.classList.add('flipped');
+                    isFlipped = true;
+                } else {
+                    const ip = 'play.sanctum.hytale';
+                    try {
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(ip).then(function() {
+                                const originalText = flipCardBack.textContent;
+                                flipCardBack.textContent = 'COPIED!';
+                                setTimeout(function() {
+                                    flipCardBack.textContent = originalText;
+                                }, 1500);
+                            }).catch(function(err) {
+                                console.error('Clipboard write failed:', err);
+                                copyToClipboardFallback(ip, flipCardBack);
+                            });
+                        } else {
+                            copyToClipboardFallback(ip, flipCardBack);
+                        }
+                    } catch(err) {
+                        console.error('Error:', err);
+                        copyToClipboardFallback(ip, flipCardBack);
+                    }
+                }
+            });
+        }
+        
+        function copyToClipboardFallback(text, flipCardBack) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            const originalText = flipCardBack.textContent;
+            flipCardBack.textContent = 'COPIED!';
+            setTimeout(function() {
+                flipCardBack.textContent = originalText;
+            }, 1500);
+        }
     </script>
     <script src="js/tilt.js"></script>
 </body>

@@ -1,5 +1,18 @@
 /* Ashkara Civilization Styling */
 
+/* Text brightness breathing animation */
+@keyframes textBrightnessBreath {
+    0% {
+        filter: brightness(0.9);
+    }
+    50% {
+        filter: brightness(1.4);
+    }
+    100% {
+        filter: brightness(0.9);
+    }
+}
+
 .ashkara-body {
     background: linear-gradient(135deg, #1f0f0f 0%, #0a0505 50%, #1f0f0f 100%);
     background-attachment: fixed;
@@ -40,39 +53,39 @@
     }
     5% {
         transform: translateY(-5vh) translateX(-3px) rotate(35deg) scale(0.95);
+        opacity: 1;
     }
-    8% {
-        transform: translateY(-8vh) translateX(3px) rotate(55deg) scale(1);
-    }
-    12% {
-        transform: translateY(-12vh) translateX(-2px) rotate(80deg) scale(0.92);
-    }
-    16% {
-        transform: translateY(-16vh) translateX(2px) rotate(110deg) scale(0.98);
+    10% {
+        transform: translateY(-10vh) translateX(3px) rotate(55deg) scale(1);
+        opacity: 1;
     }
     20% {
-        transform: translateY(-20vh) translateX(-1px) rotate(140deg) scale(1.05);
-    }
-    25% {
-        transform: translateY(-25vh) translateX(3px) rotate(170deg) scale(0.9);
+        transform: translateY(-20vh) translateX(-2px) rotate(110deg) scale(0.92);
+        opacity: 1;
     }
     30% {
-        transform: translateY(-30vh) translateX(-3px) rotate(200deg) scale(0.95);
+        transform: translateY(-30vh) translateX(2px) rotate(140deg) scale(0.98);
+        opacity: 1;
     }
     40% {
-        transform: translateY(-40vh) translateX(-2px) rotate(270deg) scale(1.03);
+        transform: translateY(-40vh) translateX(-1px) rotate(170deg) scale(1.05);
+        opacity: 1;
     }
     50% {
-        transform: translateY(-50vh) translateX(-1px) rotate(340deg) scale(0.98);
-        opacity: 0.9;
+        transform: translateY(-50vh) translateX(3px) rotate(200deg) scale(0.9);
+        opacity: 1;
     }
     60% {
-        transform: translateY(-60vh) translateX(-2px) rotate(410deg) scale(0.96);
+        transform: translateY(-60vh) translateX(-3px) rotate(270deg) scale(0.95);
         opacity: 0.7;
     }
     70% {
-        transform: translateY(-70vh) translateX(-3px) rotate(480deg) scale(0.94);
+        transform: translateY(-70vh) translateX(-2px) rotate(340deg) scale(1.03);
         opacity: 0.4;
+    }
+    85% {
+        transform: translateY(-85vh) translateX(-1px) rotate(410deg) scale(0.98);
+        opacity: 0;
     }
     80% {
         transform: translateY(-80vh) translateX(-1px) rotate(550deg) scale(0.99);
@@ -105,14 +118,14 @@
 }
 
 .ember {
-    position: fixed;
+    position: absolute;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #ff6b1a, #d84a1a);
     box-shadow: 0 0 8px #ff6b1a, 0 0 16px rgba(255, 107, 26, 0.5);
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
     will-change: transform;
     filter: blur(0.5px);
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
@@ -143,6 +156,8 @@
 /* Intro Section */
 .ashkara-intro {
     background: #190a0a;
+    background-image:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4" result="noise" seed="2" /></filter><rect width="100" height="100" fill="%23190a0a" filter="url(%23noise)" opacity="0.08"/></svg>');
     border-bottom: 2px solid rgba(139, 46, 46, 0.3);
 }
 
@@ -216,6 +231,7 @@
     font-size: 2.2rem;
     margin-bottom: 1rem;
     text-shadow: 0 0 10px rgba(216, 74, 74, 0.5), 0 0 20px rgba(216, 74, 74, 0.3);
+    animation: textBrightnessBreath 6s ease-in-out infinite;
 }
 
 .image-text p {
@@ -227,6 +243,8 @@
 /* Features Section */
 .ashkara-features {
     background: #190a0a;
+    background-image:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4" result="noise" seed="2" /></filter><rect width="100" height="100" fill="%23190a0a" filter="url(%23noise)" opacity="0.08"/></svg>');
     border-top: 2px solid rgba(139, 46, 46, 0.3);
     border-bottom: 2px solid rgba(139, 46, 46, 0.3);
 }
@@ -318,6 +336,8 @@
 /* Territory Section */
 .ashkara-territory {
     background: #190a0a;
+    background-image:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4" result="noise" seed="2" /></filter><rect width="100" height="100" fill="%23190a0a" filter="url(%23noise)" opacity="0.08"/></svg>');
     border-top: 2px solid rgba(139, 46, 46, 0.3);
     border-bottom: 2px solid rgba(139, 46, 46, 0.3);
     padding: 4rem 2rem;
@@ -380,6 +400,7 @@
     text-align: center;
     margin-bottom: 1rem;
     text-shadow: 0 0 10px rgba(216, 74, 74, 0.5), 0 0 20px rgba(216, 74, 74, 0.3);
+    animation: textBrightnessBreath 6s ease-in-out infinite;
 }
 
 .ashkara-roles > .container > p {
@@ -457,6 +478,82 @@
     .territory-list {
         grid-template-columns: 1fr;
     }
+
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Flip Card Animation */
+@keyframes flipCard {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+.flip-card {
+    perspective: 1000px;
+    margin: 1rem auto 0;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.flip-card-inner {
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateX(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flip-card-front {
+    color: #fff;
+    padding: 1rem 5rem;
+    background: linear-gradient(135deg, #d84a4a 0%, #8b2e2e 100%);
+    border: 2px solid #d84a4a;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(216, 74, 74, 0.3);
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+.flip-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 30%),
+                linear-gradient(225deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+                linear-gradient(135deg, #190a0a 0%, #0f0505 20%, #050202 50%, #0f0505 80%, #190a0a 100%);
+    color: #d84a4a;
+    transform: rotateX(180deg);
+    padding: 1rem 5rem;
+    border: 2px solid rgba(216, 74, 74, 0.5);
+    border-radius: 4px;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 
     .roles-grid {
         grid-template-columns: 1fr;
