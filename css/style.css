@@ -44,7 +44,6 @@ body {
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    perspective: 1000px;
 }
 
 body::before {
