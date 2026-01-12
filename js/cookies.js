@@ -2,6 +2,16 @@
 const CookieConsent = {
     cookieName: 'sanctum_cookie_consent',
     cookieExpiry: 365, // days
+    
+    // Analytics Configuration
+    gaTrackingId: 'G-P4Z1B9CP74', // Google Analytics 4 Measurement ID
+    
+    // Preference settings
+    preferenceKeys: {
+        theme: 'sanctum_theme',
+        animations: 'sanctum_animations',
+        language: 'sanctum_language'
+    },
 
     init() {
         this.createModal();
@@ -165,12 +175,94 @@ const CookieConsent = {
 
     enableAnalytics() {
         console.log('Analytics enabled');
-        // Add analytics scripts here (e.g., Google Analytics)
+        
+        // Google Analytics 4 implementation
+        if (this.gaTrackingId && this.gaTrackingId !== 'G-XXXXXXXXXX') {
+            // Load Google Analytics script
+            const script1 = document.createElement('script');
+            script1.async = true;
+            script1.src = `https://www.googletagmanager.com/gtag/js?id=${this.gaTrackingId}`;
+            document.head.appendChild(script1);
+            
+            // Initialize GA4
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', this.gaTrackingId, {
+                'anonymize_ip': true,
+                'cookie_flags': 'SameSite=Lax;Secure'
+            });
+            
+            console.log('Google Analytics 4 loaded');
+        }
+        
+        // Track page view
+        this.trackPageView();
+    },
+    
+    trackPageView() {
+        // Track page view (works with GA4)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                page_title: document.title,
+                page_location: window.location.href,
+                page_path: window.location.pathname
+            });
+        }
+    },
+    
+    trackEvent(category, action, label, value) {
+        // Custom event tracking
+        if (typeof gtag !== 'undefined') {
+            gtag('event', action, {
+                'event_category': category,
+                'event_label': label,
+                'value': value
+            });
+        }
     },
 
     enablePreferences() {
         console.log('Preferences enabled');
-        // Enable preference cookies
+        
+        // Load saved preferences
+        this.loadUserPreferences();
+        
+        // Example: Apply saved theme preference
+        const theme = this.getPreference('theme');
+        if (theme) {
+            document.body.classList.add(theme);
+        }
+        
+        // Example: Apply animation preferences
+        const animations = this.getPreference('animations');
+        if (animations === 'reduced') {
+            document.documentElement.style.setProperty('--animation-duration', '0.01ms');
+        }
+    },
+    
+    setPreference(key, value) {
+        // Store a user preference
+        const prefKey = this.preferenceKeys[key] || `sanctum_${key}`;
+        this.setCookie(prefKey, value, this.cookieExpiry);
+    },
+    
+    getPreference(key) {
+        // Retrieve a user preference
+        const prefKey = this.preferenceKeys[key] || `sanctum_${key}`;
+        return this.getCookie(prefKey);
+    },
+    
+    loadUserPreferences() {
+        // Load all saved preferences
+        const preferences = {};
+        for (const [key, cookieKey] of Object.entries(this.preferenceKeys)) {
+            const value = this.getCookie(cookieKey);
+            if (value) {
+                preferences[key] = value;
+            }
+        }
+        return preferences;
     },
 
     openModal() {
