@@ -50,10 +50,16 @@
     }
     50% {
         transform: translateX(var(--drift)) rotateZ(180deg);
+        opacity: 1;
+    }
+    80% {
+        top: 200vh;
+        opacity: 1;
+        transform: translateX(0) rotateZ(288deg);
     }
     100% {
-        top: 280vh;
-        opacity: 0.8;
+        top: 250vh;
+        opacity: 0;
         transform: translateX(0) rotateZ(360deg);
     }
 }

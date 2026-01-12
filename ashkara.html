@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashkara - Sanctum</title>
+    <link rel="icon" type="image/png" href="images/logo icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/ashkara.css">
 </head>
@@ -204,9 +205,13 @@
             fadeStartPercent = (distanceToCrimson / totalTravelPixels) * 100 * 0.85; // Start fading earlier
         }
 
-        // Spawn embers with 80% chance every second (more numerous)
-        setInterval(() => {
-            if (Math.random() < 0.95) {
+        // Disable particles on mobile/tablet devices
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 1024;
+        
+        if (!isMobile) {
+            // Spawn embers with 80% chance every second (more numerous)
+            setInterval(() => {
+                if (Math.random() < 0.95) {
                 const ember = document.createElement('div');
                 ember.className = 'ember';
                 
@@ -264,8 +269,7 @@
                     if (ember.parentNode) ember.remove();
                 }, (duration + delay) * 1000 + 500);
             }
-        }, 1000);
-
+        }, 1000);        }
         // Flip card animation and copy to clipboard
         const flipCard = document.getElementById('ashkaraCard');
         if (flipCard) {

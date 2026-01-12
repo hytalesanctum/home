@@ -238,13 +238,14 @@
 
 .empyrea-features h2 {
     color: #5faa6f;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .empyrea-features .feature-box {
     background: linear-gradient(135deg, rgba(95, 170, 111, 0.15) 0%, rgba(26, 38, 32, 0.8) 100%);
     border-left: 4px solid #5faa6f;
     border-radius: 4px;
-    padding: 2rem;
+    padding: clamp(1rem, 3vw, 2rem);
     transition: all 0.3s ease;
 }
 
@@ -256,16 +257,30 @@
 
 .empyrea-features .feature-box h3 {
     color: #7dd185;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 .empyrea-features .feature-box p {
     color: #d8e8dc;
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1rem, 3vw, 2rem);
+}
+
+@media (min-width: 1135px) {
+    .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Magic Section */
@@ -450,10 +465,6 @@
 @media (max-width: 768px) {
     .empyrea-header h1 {
         font-size: 2.5rem;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
     }
 
     .magic-types {
