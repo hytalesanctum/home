@@ -212,8 +212,6 @@ body::before {
 .clickable-code {
     cursor: pointer;
     position: relative;
-    text-decoration: underline;
-    text-decoration-style: dotted;
     transition: all 0.3s ease;
 }
 
@@ -230,25 +228,25 @@ body::before {
 /* Copy Notification */
 .copy-notification {
     position: fixed;
-    top: 80px;
+    top: 0;
     left: 50%;
-    transform: translateX(-50%) translateY(-100px);
+    transform: translateX(-50%) translateY(-100%);
     background: linear-gradient(135deg, #d4af37, #c5a028);
     color: #1a1a1a;
     padding: 12px 30px;
-    border-radius: 8px;
+    border-radius: 0 0 8px 8px;
     font-weight: 600;
     font-size: 1rem;
     box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
-    z-index: 10001;
-    opacity: 0;
-    transition: all 0.3s ease;
+    z-index: 99;
+    opacity: 1;
+    transition: transform 0.4s ease;
     pointer-events: none;
+    --navbar-height: 70px;
 }
 
 .copy-notification.show {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
+    transform: translateX(-50%) translateY(var(--navbar-height));
 }
 
 @keyframes pulse-glow {

@@ -266,6 +266,9 @@
         }
         
         function showCopyNotification() {
+            const navbar = document.querySelector('.navbar');
+            const navbarHeight = navbar ? navbar.offsetHeight : 70;
+            copyNotification.style.setProperty('--navbar-height', navbarHeight + 'px');
             copyNotification.classList.add('show');
             setTimeout(() => {
                 copyNotification.classList.remove('show');
