@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/cookies.css">
 </head>
 <body>
+    <div id="copyNotification" class="copy-notification">Copied!</div>
     <nav class="navbar">
         <div class="container">
             <div class="logo"><img src="images/logo full.png" alt="Sanctum Logo" class="logo-img"></div>
@@ -54,7 +55,7 @@
             <p>Sanctum is home to four magnificent civilizations, each with its own culture, magic, and destiny. Will you join Empyrea's verdant forests, Zephyria's golden deserts, Pagorea's frozen tundras, or Ashkara's volcanic forges?</p>
             <div class="creator-code-banner">
                 <span class="creator-code-icon">🎮</span>
-                <p>Use code <strong>'Klaod'</strong> on the Hytale store to support us!</p>
+                <p>Use code <strong id="creatorCode" class="clickable-code">Klaod</strong> on the Hytale store to support us!</p>
             </div>
         </div>
     </section>
@@ -237,6 +238,38 @@
             setTimeout(function() {
                 flipCardBack.textContent = originalText;
             }, 1500);
+        }
+
+        // Creator code copy functionality
+        const creatorCodeElement = document.getElementById('creatorCode');
+        const copyNotification = document.getElementById('copyNotification');
+        
+        if (creatorCodeElement) {
+            creatorCodeElement.addEventListener('click', async function(e) {
+                e.preventDefault();
+                const code = 'Klaod';
+                
+                try {
+                    await navigator.clipboard.writeText(code);
+                    showCopyNotification();
+                } catch(err) {
+                    // Fallback for older browsers
+                    const textarea = document.createElement('textarea');
+                    textarea.value = code;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    showCopyNotification();
+                }
+            });
+        }
+        
+        function showCopyNotification() {
+            copyNotification.classList.add('show');
+            setTimeout(() => {
+                copyNotification.classList.remove('show');
+            }, 2000);
         }
     </script>
     <script src="js/cookies.js"></script>

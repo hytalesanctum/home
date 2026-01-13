@@ -209,6 +209,48 @@ body::before {
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
+.clickable-code {
+    cursor: pointer;
+    position: relative;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    transition: all 0.3s ease;
+}
+
+.clickable-code:hover {
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+    transform: scale(1.05);
+}
+
+.clickable-code:active {
+    transform: scale(0.95);
+}
+
+/* Copy Notification */
+.copy-notification {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: linear-gradient(135deg, #d4af37, #c5a028);
+    color: #1a1a1a;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
+    z-index: 10001;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.copy-notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
 @keyframes pulse-glow {
     0%, 100% {
         box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
